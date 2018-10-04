@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css?family=Advent Pro');
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Syncopate');
+@import url('https://fonts.googleapis.com/css?family=Varela');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+html, body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #eae0c8;
+  background-image: radial-gradient(farthest-corner at 60% 55%, cyan, skyblue, royalblue, black)
+}
+
+#drum-machine {
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  border: 2px solid darkslategrey;
+  border-radius: 8px;
+  width: auto;
+  padding: 10px;
+  background-color: lightgray;
+  box-shadow: 8px 8px 25px black;
+  background-image: linear-gradient(top left, silver 8%, lightgrey 56%);
+  background-image: -o-linear-gradient(top left, silver 8%, lightgrey 56%);
+  background-image: -moz-linear-gradient(top left, silver 8%, lightgrey 56%);
+  background-image: -webkit-linear-gradient(top left, silver 8%, lightgrey 56%);
+  background-image: -ms-linear-gradient(top left, silver 8%, lightgrey 56%);
+  background-image: gradient(top left, silver 8%, lightgrey 56%);
+}
+
+.power, .bankbutton {
+  position: absolute;
+  height: 25px;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  font-family: Varela;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #f1f1f1;
+	text-shadow:0px -1px 1px rgba(255,255,255,0.5);
+  /* Borders */
+	border-width:1px;
+	border-style:solid;
+	border-left-color:silver;
+	border-right-color:darkgrey;
+	border-top-color:silver;
+	border-bottom:3px solid grey;
+  /* Shadows */
+  box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+	-moz-box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+	-ms-box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+	-webkit-box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+	-khtml-box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+	-o-box-shadow:inset 0 0 5px 0 rgba(255,255,255,0.5);
+ 	/* Transitions */
+	-moz-transition:.3s ease-out;
+	-webkit-transition:.3s ease-out;
+	-o-transition:.3s ease-out;
+	-ms-transition:.3s ease-out;
+	-khtml-transition:.3s ease-out;
+	transition:.3s ease-out;
+}
+
+.power:active, .bankbutton:active, .drum-pad:active {
+  margin-top:4px;
+	color:#777;
+	border:1px solid #999;
+	/*{Shadow}*/
+	box-shadow:inset 0 0 5px 0 #333;
+	-moz-box-shadow:inset 0 0 5px 0 #333;
+	-webkit-box-shadow:inset 0 1px 2px 0 #333, 0 1px 1px 0 #fff;
+}
+.power:hover, .bankbutton:hover, .drum-pad:hover {
+  background-image:-moz-linear-gradient(top,transparent,rgba(0,0,0,0.17));
+	background-image:-webkit-linear-gradient(top,transparent,rgba(0,0,0,0.17));
+	background-image:-ms-linear-gradient(top,transparent,rgba(0,0,0,0.17));
+	background-image:-khtml-linear-gradient(top,transparent,rgba(0,0,0,0.17));
+	background-image:-o-linear-gradient(top,transparent,rgba(0,0,0,0.17));
+	background-image:linear-gradient(top,transparent,rgba(0,0,0,0.17));
+}
+
+
+.power {
+  right: 20px;
+  width: 80px;
+}
+.bankbutton {
+  right: 198px;
+  width: 50px;
+}
+
+.panel {
+  margin: 10px;
+  width: 220px;
+  height: auto;
+}
+
+.pad-bank {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 240px;
+  height: auto;
+}
+
+.drum-pad {
+  display: flex;
+  color: grey;
+  background-color: #f1f1f1;
+  font-family: Syncopate;
+  font-weight: 900;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  /* Shadows */
+  box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+  /* Transitions */
+  -moz-transition:.3s ease-out;
+	-webkit-transition:.3s ease-out;
+	-o-transition:.3s ease-out;
+	-ms-transition:.3s ease-out;
+	-khtml-transition:.3s ease-out;
+	transition:.3s ease-out;
+}
+
+.poweroff-buttonfade {
+  color: lightgrey;
+  transition: color 1.5s ease-out;
+}
+
+.poweron-buttonglow {
+  transition: color 1s ease-in;
+}
+
+
+#display, .volumedisplay, .power-display, .bank-display {
+  display: flex;
+  margin: 0px;
+  height: 80px;
+  width: max;
+  color: white;
+  background-color: #7DF9FF;
+  border: 1px solid #ACD3DE;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Orbitron';
+  font-size: 28px;
+}
+#display {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.power-display, .bank-display {
+  height: 30px;
+  width: 50%;
+  font-size:14px;
+}
+.bank-display {
+  position: relative;
+  top: -30px;
+  left: 110px;
+}
+.volumedisplay {
+  margin-top: -30px;
+  height: 50px;
+  font-size: 22px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0px 1px 2px darkgrey;
+   background-image: linear-gradient(to bottom, #7DF9FF, #7DF9dd);
+  
+}
+
+#brand {
+  position: relative;
+  text-align: center;
+  top: 8px;
+  color: #3c3c3d;
+  font-weight: bold;
+  font-style: italic;
+  font-family: 'Advent Pro';
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+
+
+.slidecontainer {
+  margin-top: 10px;
+  padding: 12px;
+  width: 100%;  /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    width: 100%;
+    height: 7px;   /* Specified height */
+    border-radius: 7px;
+    background: silver;  /* Silver background */
+    outline: none;      /* Remove outline */
+    opacity: 0.7;       /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;  /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  
+    box-shadow: 0 1px 0px rgba(255,255,255,0.25),
+    inset 0 0 4px rgba(0,0,0,0.9);
+  
+}
+
+/* Mouse-over effects */
+.slider:hover {
+    opacity: 1;   /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;            /* Set a specific slider handle width */
+    height: 18px;           /* Slider handle height */
+    border-radius: 50%;
+    background: #d4d4d4;    /* white background */
+    cursor: pointer;        /* Cursor on hover */
+    border: 0px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0px 2px rgba(0,0,0,0.4),
+      inset 0 0px 1px rgba(0,0,0,0.3),
+      0 1px 2px rgba(0,0,0,0.6),
+      0 4px 2px rgba(0,0,0,0.2),
+      0 9px 4px rgba(0,0,0,0.1),
+      inset 0 2px 1px rgba(255,255,255,1.0);
+    outline: none;
+}
+
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+// screen reduction, shrink object
+@media screen and (max-width: 588px) {
+  #drum-machine {
+    transform: scale(0.8) translateX(-63%) translateY(-63%);
+    transition: transform 1.2s ease-in;
+  }
+}
+
+//screen enlarge, object grows
+@media screen and (min-width: 588px) {
+  #drum-machine {
+    transition: transform 1.2s ease-out;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  #drum-machine {
+    width: 298px;
+    height: 100%;
+    height: 520px;
+  }
+  .pad-bank {
+    position: absolute;
+    top: 230px;
+    left: 10px;
+    
+  }
+  .power {
+    top: 230px;
+    right: 20px;
+  }
+  .bankbutton {
+    top: 230px;
+    left: 18px;
+  }
+  .slidecontainer {
+    position: absolute;
+    padding: 0px;
+    top: 355px;
+    left: 152px;
+    width: 218px;
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg);
+  }
+  #brand {
+    top: 48px;
+    font-size: 18px;
+  }
+  #display, .power-display, .bank-display, .volumedisplay {
+    transform: scale(1.25);
+    position: relative;
+    
+  }
+  #display{
+    left: 18px
+  } .volumedisplay {
+    top: 25px;
+    left: 18px
+  }
+  .power-display {
+    top: 14px;
+    left: 4px;
+  }
+  .bank-display {
+    top: -16px;
+    left: 141px;
+  }
+}
